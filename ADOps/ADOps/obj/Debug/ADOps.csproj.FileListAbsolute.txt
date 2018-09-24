@@ -1,0 +1,7 @@
+C:\Users\Bram\source\repos\ADOps\ADOps\bin\Debug\ADOps.exe.config
+C:\Users\Bram\source\repos\ADOps\ADOps\bin\Debug\ADOps.exe
+C:\Users\Bram\source\repos\ADOps\ADOps\bin\Debug\ADOps.pdb
+C:\Users\Bram\source\repos\ADOps\ADOps\obj\Debug\ADOps.csprojAssemblyReference.cache
+C:\Users\Bram\source\repos\ADOps\ADOps\obj\Debug\ADOps.csproj.CoreCompileInputs.cache
+C:\Users\Bram\source\repos\ADOps\ADOps\obj\Debug\ADOps.exe
+C:\Users\Bram\source\repos\ADOps\ADOps\obj\Debug\ADOps.pdb
