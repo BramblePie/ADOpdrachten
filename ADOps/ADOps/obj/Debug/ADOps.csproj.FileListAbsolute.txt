@@ -5,3 +5,10 @@ C:\Users\Bram\source\repos\ADOps\ADOps\obj\Debug\ADOps.csprojAssemblyReference.c
 C:\Users\Bram\source\repos\ADOps\ADOps\obj\Debug\ADOps.csproj.CoreCompileInputs.cache
 C:\Users\Bram\source\repos\ADOps\ADOps\obj\Debug\ADOps.exe
 C:\Users\Bram\source\repos\ADOps\ADOps\obj\Debug\ADOps.pdb
+C:\Users\bramp\Source\Repos\ADOpdrachten\ADOps\ADOps\bin\Debug\ADOps.exe.config
+C:\Users\bramp\Source\Repos\ADOpdrachten\ADOps\ADOps\bin\Debug\ADOps.exe
+C:\Users\bramp\Source\Repos\ADOpdrachten\ADOps\ADOps\bin\Debug\ADOps.pdb
+C:\Users\bramp\Source\Repos\ADOpdrachten\ADOps\ADOps\obj\Debug\ADOps.csprojAssemblyReference.cache
+C:\Users\bramp\Source\Repos\ADOpdrachten\ADOps\ADOps\obj\Debug\ADOps.csproj.CoreCompileInputs.cache
+C:\Users\bramp\Source\Repos\ADOpdrachten\ADOps\ADOps\obj\Debug\ADOps.exe
+C:\Users\bramp\Source\Repos\ADOpdrachten\ADOps\ADOps\obj\Debug\ADOps.pdb

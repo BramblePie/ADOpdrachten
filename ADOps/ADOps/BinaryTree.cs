@@ -59,7 +59,22 @@ namespace ADOps
 
         public int Height()
         {
-            throw new NotImplementedException();
+            if (root == null)
+                return -1;
+
+            return HeightRecur(root);
+        }
+
+        private int HeightRecur(BinaryNode<T> itr)
+        {
+            if (itr.Left == null && itr.Right == null)
+                return 0;
+            else if (itr.Left == null)
+                return 1 + HeightRecur(itr.Right);
+            else if (itr.Right == null)
+                return 1 + HeightRecur(itr.Left);
+
+            return 1 + Math.Max(HeightRecur(itr.Left), HeightRecur(itr.Right));
         }
 
         public void PrintPreOrder()
