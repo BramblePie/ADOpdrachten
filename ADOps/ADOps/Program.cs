@@ -30,6 +30,7 @@ namespace ADOps
                     Right = new BinaryNode<int>() { Data = 6 }
                 });
 
+            // op4
             Console.WriteLine(bTree.ToString());
 
             Console.WriteLine(bTree.FindNumberLeaves());
