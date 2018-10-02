@@ -32,7 +32,7 @@ namespace ADOps
 
             Console.WriteLine(bTree.ToString());
 
-            Console.WriteLine(bTree.Height());
+            Console.WriteLine(bTree.FindNumberLeaves());
 
             Console.ReadLine();
         }

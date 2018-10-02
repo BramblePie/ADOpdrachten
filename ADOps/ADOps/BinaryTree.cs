@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace ADOps
 {
-    public interface IBinaryTree<T>
+    public interface IBinaryTree<T> where T : IComparable
     {
         BinaryNode<T> GetRoot();
         int Size();
         int Height();
+
+        BinaryNode<T> FindFirst(T nugget);
+        int FindNumberLeaves();
 
         void PrintPreOrder();
         void PrintInOrder();
@@ -21,7 +24,7 @@ namespace ADOps
         void Merge(T rootItem, BinaryTree<T> t1, BinaryTree<T> t2);
     }
 
-    public class BinaryTree<T> : IBinaryTree<T>
+    public class BinaryTree<T> : IBinaryTree<T> where T : IComparable
     {
         private BinaryNode<T> root;
         private string str;
@@ -36,6 +39,40 @@ namespace ADOps
         public BinaryNode<T> GetRoot()
         {
             return root;
+        }
+
+        public BinaryNode<T> FindFirst(T nugget)
+        {
+            return FindFirst(root, nugget);
+        }
+
+        private BinaryNode<T> FindFirst(BinaryNode<T> itr, T nugget)
+        {
+            if (itr == null)
+                return null;
+
+            if (itr.Data.CompareTo(nugget) == 0)
+                return itr;
+            else if (itr.Data.CompareTo(nugget) > 0)
+                return FindFirst(itr.Left, nugget);
+
+            return FindFirst(itr.Right, nugget);
+        }
+
+        public int FindNumberLeaves()
+        {
+            if (root == null)
+                return -1;
+            return FindNumberLeaves(root);
+        }
+
+        private int FindNumberLeaves(BinaryNode<T> itr)
+        {
+            if (itr.Left != null)
+                return 1 + FindNumberLeaves(itr.Left);
+            if (itr.Right != null)
+                return 1 + FindNumberLeaves(itr.Right);
+            return 1;
         }
 
         public int Size()
@@ -161,29 +198,29 @@ namespace ADOps
         {
             str = "";
             if (root != null)
-                ToStringRecur(root);
+                ToString(root);
 
             str = str.Trim('[').Trim(' ').Trim(']').Trim(' ');
             return str;
         }
 
-        private void ToStringRecur(BinaryNode<T> itr)
+        private void ToString(BinaryNode<T> itr)
         {
             str += "[ ";
             if (itr.Left != null)
-                ToStringRecur(itr.Left);
+                ToString(itr.Left);
             else
                 str += "NULL ";
             str += $"{itr.Data} ";
             if (itr.Right != null)
-                ToStringRecur(itr.Right);
+                ToString(itr.Right);
             else
                 str += "NULL ";
             str += "] ";
         }
     }
 
-    public class BinaryNode<T>
+    public class BinaryNode<T> where T : IComparable
     {
         public T Data { get; set; }
         public BinaryNode<T> Left { get; set; }
