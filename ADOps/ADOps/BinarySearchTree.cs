@@ -32,8 +32,19 @@ namespace ADOps
 
         public void Insert(int x)
         {
-            Node p = FindParentOfNode(x);
+            Node i = root;
+            Node p = root;
 
+            while (i != null)
+            {
+                p = i;
+                if (x < i.element)
+                    i = i.left;
+                else if (x > i.element)
+                    i = i.right;
+                else
+                    throw new ArgumentException("Duplicate element in binary search three");
+            }
             if (x < p.element)
                 p.left = new Node(x);
             else
@@ -42,43 +53,53 @@ namespace ADOps
 
         public void Remove(int x)
         {
-            throw new NotImplementedException();
+            root = Remove(root, x);
         }
 
-        private Node FindParentOfNode(int x)
+        private Node Remove(Node i, int x)
         {
-            if (x == root.element)
-                return root;
-            Node p = root;
-            Node i = root;
-            while (i != null)
+            if (i == null)
+                throw new ArgumentException($"Element {x} not found");
+            if (x < i.element)
+                i.left = Remove(i.left, x);
+            else if (x > i.element)
+                i.right = Remove(i.right, x);
+            else if (i.left != null && i.right != null)
             {
-                if (x == i.element)
-                    break;
-                p = i;
-                i = (x < i.element) ? i.left : i.right;
+                i.element = FindMin(i.right).element;
+                RemoveMin(i.right);
             }
-            return p;
+            else
+                i = i.left ?? i.right;
+            return i;
         }
 
         public void RemoveMin()
         {
-            Node p = root;
-            Node min = root;
-            while (min.left != null)
+            RemoveMin(root);
+        }
+
+        private void RemoveMin(Node node)
+        {
+            Node p = node;
+            while (node.left != null)
             {
-                p = min;
-                min = min.left;
+                p = node;
+                node = node.left;
             }
-            p.left = min.right;
+            p.left = node.right;
         }
 
         public int FindMin()
         {
-            Node itr = root;
-            while (itr.left != null)
-                itr = itr.left;
-            return itr.element;
+            return FindMin(root).element;
+        }
+
+        private Node FindMin(Node node)
+        {
+            while (node.left != null)
+                node = node.left;
+            return node;
         }
 
         public string InOrder()

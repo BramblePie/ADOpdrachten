@@ -45,8 +45,10 @@ namespace ADOps
             searchTree.Insert(5);
             searchTree.Insert(7);
             searchTree.Insert(2);
+            searchTree.Insert(3);
             Console.WriteLine(searchTree);
-            Console.WriteLine(searchTree.InOrder());
+            searchTree.Remove(3);
+            Console.WriteLine(searchTree);
             #endregion
 
             Console.WriteLine("\n\n\nEND");
