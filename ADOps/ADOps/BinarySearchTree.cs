@@ -83,7 +83,12 @@ namespace ADOps
 
         public string InOrder()
         {
-            throw new NotImplementedException();
+            return IsOrder(root, "").TrimEnd(' ');
+        }
+
+        private string IsOrder(Node node, string str)
+        {
+            return $"{((node.left != null) ? IsOrder(node.left, str) : "")}{node.element} {((node.right != null) ? IsOrder(node.right, str) : "")}";
         }
 
         public override string ToString()
@@ -95,13 +100,7 @@ namespace ADOps
 
         private string ToString(Node itr, string str)
         {
-            if (itr.left == null && itr.right == null)
-                return $"[ NULL {itr.element} NULL ]";
-            else if (itr.left == null)
-                return $"[ NULL {itr.element} {ToString(itr.right, str)} ]";
-            else if (itr.right == null)
-                return $"[ {ToString(itr.left, str)} {itr.element} NULL ]";
-            return $"[ {ToString(itr.left, str)} {itr.element} {ToString(itr.right, str)} ]";
+            return $"[ {((itr.left != null) ? ToString(itr.left, str) : "NULL")} ] {itr.element} [ {((itr.right != null) ? ToString(itr.right, str) : "NULL")} ]";
         }
 
         private class Node
