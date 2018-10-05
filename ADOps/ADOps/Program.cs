@@ -10,6 +10,34 @@ namespace ADOps
     {
         static void Main(string[] args)
         {
+            #region Les 1
+
+            Sieve sieve = new Sieve(100);
+            Console.WriteLine($"All primes till: {sieve.Limit}");
+            foreach (var p in sieve.Primes)
+                Console.Write(p + " ");
+            Console.WriteLine('\n');
+
+            #endregion
+
+            #region Les 2
+            // ArrayList
+            MyArrayList myArrayList = new MyArrayList(2);
+            myArrayList.Add(6);
+            myArrayList.Add(4);
+            myArrayList.Add(5);
+            myArrayList.Add(7);
+            myArrayList.Add(8);
+            myArrayList.Set(0, 8);
+            myArrayList.Print();
+            Console.WriteLine(myArrayList.CountOccurences(8));
+            Console.WriteLine(myArrayList.Get(1));
+            myArrayList.Clear();
+            myArrayList.Print();
+            Console.WriteLine();
+
+            #endregion
+
             #region Les 4
             //// Op2 les 4
 

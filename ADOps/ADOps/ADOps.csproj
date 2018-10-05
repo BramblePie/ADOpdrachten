@@ -45,8 +45,10 @@
     <Compile Include="BinarySearchTree.cs" />
     <Compile Include="BinaryTree.cs" />
     <Compile Include="FCNSNode.cs" />
+    <Compile Include="MyArrayList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sieve.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
