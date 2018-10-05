@@ -10,24 +10,30 @@ namespace ADOps
     {
         // Toevoegen aan het einde van de lijst, mits de lijst niet vol is 
         void Add(int n);
+        // O(1)
 
         // Maak de list leeg 
         void Clear();
+        // O(1)
 
         // Tel hoe vaak het gegeven getal voorkomt 
         int CountOccurences(int n);
+        // O(N)
 
         // Haal de waarde op van een bepaalde index 
         int Get(int index);
+        // O(1)
 
         // Wijzig een item op een bepaalde index 
         void Set(int index, int n);
+        // O(1)
 
         // Print de inhoud van de list 
         void Print();
+        // O(N)
     }
 
-    class MyArrayList : ISimpleArrayList
+    public class MyArrayList : ISimpleArrayList
     {
         private int[] array;
         private int i;

@@ -22,6 +22,7 @@ namespace ADOps
 
             #region Les 2
             // ArrayList
+            Console.WriteLine("Simple array list");
             MyArrayList myArrayList = new MyArrayList(2);
             myArrayList.Add(6);
             myArrayList.Add(4);
@@ -34,6 +35,54 @@ namespace ADOps
             Console.WriteLine(myArrayList.Get(1));
             myArrayList.Clear();
             myArrayList.Print();
+            Console.WriteLine();
+
+            // LinkedList
+            Console.WriteLine("Simple linked list");
+            MyLinkedList<char> myLinkedList = new MyLinkedList<char>();
+            myLinkedList.Add('r');
+            myLinkedList.Add('a');
+            myLinkedList.Add('f');
+            myLinkedList.Add('o');
+            myLinkedList.Print();
+            myLinkedList.Insert(1, 'i');
+            myLinkedList.Print();
+            myLinkedList.RemoveFirst();
+            myLinkedList.Print();
+            myLinkedList.Clear();
+            Console.WriteLine();
+
+            // MyStack
+            Console.WriteLine("My simple stack");
+            MyStack<int> myStack = new MyStack<int>();
+            myStack.Push(2);
+            myStack.Push(4);
+            myStack.Push(5);
+            myStack.Push(8);
+            Console.WriteLine(myStack.Top());
+            Console.WriteLine(myStack.Pop());
+            Console.WriteLine(myStack.Pop());
+            Console.WriteLine();
+            Console.WriteLine(myStack.CheckBrackets("((()()))"));
+            Console.WriteLine(myStack.CheckBrackets("())"));
+            Console.WriteLine(myStack.CheckBrackets("((())"));
+
+            Console.WriteLine(myStack.CheckBrackets2("[ ( ( [ ] ) ) ( ) ]"));
+            Console.WriteLine(myStack.CheckBrackets2("( [ ) ]"));
+            Console.WriteLine();
+
+            // MyQueue
+            Console.WriteLine("My simple queue");
+            IQueue<int> q = new MyQueue<int>(2);
+            q.Enqueue(1);
+            q.Enqueue(2);
+            q.Enqueue(3);
+            q.Enqueue(4);
+            q.Enqueue(5);
+            Console.WriteLine(q.Front());
+            Console.WriteLine(q.Dequeue());
+            Console.WriteLine(q.Dequeue());
+            Console.WriteLine(q.Dequeue());
             Console.WriteLine();
 
             #endregion
