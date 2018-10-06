@@ -51,6 +51,7 @@
     <Compile Include="MyStack.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecurBox.cs" />
     <Compile Include="Sieve.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,12 +64,16 @@ namespace ADOps
             Console.WriteLine(myStack.Pop());
             Console.WriteLine(myStack.Pop());
             Console.WriteLine();
-            Console.WriteLine(myStack.CheckBrackets("((()()))"));
-            Console.WriteLine(myStack.CheckBrackets("())"));
-            Console.WriteLine(myStack.CheckBrackets("((())"));
-
-            Console.WriteLine(myStack.CheckBrackets2("[ ( ( [ ] ) ) ( ) ]"));
-            Console.WriteLine(myStack.CheckBrackets2("( [ ) ]"));
+            string brackets = "((()()))";
+            Console.WriteLine($"{brackets,-20} is valid? {myStack.CheckBrackets(brackets)}");
+            brackets = "())";
+            Console.WriteLine($"{brackets,-20} is valid? {myStack.CheckBrackets(brackets)}");
+            brackets = "((())";
+            Console.WriteLine($"{brackets,-20} is valid? {myStack.CheckBrackets(brackets)}");
+            brackets = "[ ( ( [ ] ) ) ( ) ]";
+            Console.WriteLine($"{brackets,-20} is valid? {myStack.CheckBrackets2(brackets)}");
+            brackets = "( [ ) ]";
+            Console.WriteLine($"{brackets,-20} is valid? {myStack.CheckBrackets2(brackets)}");
             Console.WriteLine();
 
             // MyQueue
@@ -85,6 +90,58 @@ namespace ADOps
             Console.WriteLine(q.Dequeue());
             Console.WriteLine();
 
+            #endregion
+
+            #region Les 3
+
+            // Faculteit
+            Console.WriteLine("Factorial (recursion)");
+            uint nFac = 12;
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            ulong ansFac1 = RecurBox.Factorial(nFac, recursive: false);
+            sw.Stop();
+            long ticksFac1 = sw.ElapsedTicks;
+            sw.Restart();
+            ulong ansFac2 = RecurBox.Factorial(nFac, recursive: true);
+            sw.Stop();
+            long ticksFac2 = sw.ElapsedTicks;
+            sw.Reset();
+            Console.WriteLine($"(Loop)      {nFac}! = {ansFac1} \t [ticks: {ticksFac1}]");
+            Console.WriteLine($"(Recusive)  {nFac}! = {ansFac2} \t [ticks: {ticksFac2}]");
+
+            // Fibonacci
+            Console.WriteLine("\nFibonacci (recursion)");
+            int nFib = 30;
+            sw.Start();
+            int[] ansFib1 = RecurBox.Fibonacci(nFib, recursive: false);
+            sw.Stop();
+            long ticksFib1 = sw.ElapsedTicks;
+            sw.Restart();
+            int[] ansFib2 = RecurBox.Fibonacci(nFib, recursive: true);
+            sw.Stop();
+            long ticksFib2 = sw.ElapsedTicks;
+            sw.Reset();
+            Console.WriteLine($"{nFib} numbers of Fibonacci: [ticks: {ticksFib1,-8}] (Loop)");
+            ansFib1.ToList().ForEach(a => Console.Write(a.ToString() + " "));
+            Console.WriteLine($"\n{nFib} numbers of Fibonacci: [ticks: {ticksFib2,-8}] (Recursive)");
+            ansFib2.ToList().ForEach(a => Console.Write(a.ToString() + " "));
+            Console.WriteLine();
+
+            // OmEnOm som
+            Console.WriteLine("\nOm en om (recursion)");
+            int nOm = 7;
+            Console.WriteLine($"f({nOm}) = {RecurBox.OmEnOm(nOm)}");
+
+            Console.WriteLine(RecurBox.OnesInBinary(127));
+
+            List<int> printList = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            RecurBox.PrintForward(printList, 3);
+            Console.WriteLine();
+            RecurBox.PrintBackward(printList, 3);
+            Console.WriteLine();
+
+            Console.WriteLine();
             #endregion
 
             #region Les 4
