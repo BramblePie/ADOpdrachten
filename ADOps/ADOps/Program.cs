@@ -133,13 +133,36 @@ namespace ADOps
             int nOm = 7;
             Console.WriteLine($"f({nOm}) = {RecurBox.OmEnOm(nOm)}");
 
+            Console.WriteLine("\nCount binary ones");
             Console.WriteLine(RecurBox.OnesInBinary(127));
 
+            Console.WriteLine("\nPrint list");
             List<int> printList = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             RecurBox.PrintForward(printList, 3);
             Console.WriteLine();
             RecurBox.PrintBackward(printList, 3);
-            Console.WriteLine();
+
+            //int[] arrRandom = new int[] { 94, 65, 12, 6, 72, 0, 55, 25, 3, 93, 34, 30, 66, 57, 24, 58, 98, 99, 83, 49, 1, 59, 73, 51, 97, 28, 17, 46, 67, 47, 95, 89, 69, 63, 76, 26, 23, 10, 74, 88, 68, 14, 81, 75, 38, 39, 54, 20, 41, 80, 84, 64, 82, 71, 33, 78, 45, 32, 18, 48, 27, 44, 87, 7, 2, 4, 96, 13, 9, 56, 90, 15, 11, 53, 5, 86, 37, 35, 36, 61, 21, 40, 85, 50, 8, 52, 29, 16, 19, 31, 42, 43, 77, 60, 79, 92, 70, 62, 22, 91 };
+            Random random = new Random();
+            int[] arrRandom = Enumerable.Range(0, 1000).Select(n => random.Next(10000)).ToArray();
+            int[] arr = new int[arrRandom.Length];
+            arrRandom.CopyTo(arr, 0);
+            sw.Start();
+            SortBox.InsertionSort(arr);
+            sw.Stop();
+            long insertT = sw.ElapsedTicks;
+            arrRandom.CopyTo(arr, 0);
+            sw.Restart();
+            SortBox.ShellSort(arr);
+            sw.Stop();
+            long shellT = sw.ElapsedTicks;
+            arrRandom.CopyTo(arr, 0);
+            sw.Restart();
+            SortBox.MergeSort(arr);
+            sw.Stop();
+            long mergeT = sw.ElapsedTicks;
+            sw.Reset();
+            Console.WriteLine($"\nInsert: {insertT}, shell: {shellT}, merge: {mergeT}");
 
             Console.WriteLine();
             #endregion
@@ -174,6 +197,7 @@ namespace ADOps
 
             #region Les 5
 
+            Console.WriteLine("Binary search tree");
             IBinarySearchTree searchTree = new BinarySearchTree(6);
             searchTree.Insert(4);
             searchTree.Insert(5);
@@ -183,6 +207,24 @@ namespace ADOps
             Console.WriteLine(searchTree);
             searchTree.Remove(3);
             Console.WriteLine(searchTree);
+
+            Console.WriteLine("\nBinary heap");
+            BinaryHeap binaryHeap = new BinaryHeap();
+            binaryHeap.Add(3);
+            binaryHeap.Add(6);
+            binaryHeap.Add(13);
+            binaryHeap.Add(55);
+            Console.WriteLine(binaryHeap.StringPreOrder());
+            Console.WriteLine(binaryHeap.RemoveMin());
+            Console.WriteLine(binaryHeap.StringPreOrder());
+            Console.WriteLine(binaryHeap.RemoveMin());
+            Console.WriteLine(binaryHeap.StringPreOrder());
+            binaryHeap.AddFree(new int[] { 1, 7, 99, 21, 11 });
+            Console.WriteLine(binaryHeap.StringPreOrder());
+            binaryHeap.BuildHeap();
+            while (binaryHeap.Size > 0)
+                Console.Write($"{binaryHeap.RemoveMin()} ");
+
             #endregion
 
             Console.WriteLine("\n\n\nEND");
