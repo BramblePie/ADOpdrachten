@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace ADOps
 {
-    public interface IBinaryHeap
+    public interface IBinaryHeap<T> where T : IComparable
     {
-        void Add(int n);
-        int FindMin();
-        int RemoveMin();
+        void Add(T n);
+        T FindMin();
+        T RemoveMin();
     }
 
-    public class BinaryHeap : IBinaryHeap
+    public class BinaryHeap<T> : IBinaryHeap<T> where T : IComparable
     {
-        private int[] array;
+        private T[] array;
 
         /// <summary>
         /// Number of elements in array. 
@@ -27,9 +27,9 @@ namespace ADOps
 
         #region Constructors
 
-        public BinaryHeap(int[] array)
+        public BinaryHeap(T[] array)
         {
-            this.array = new int[array.Length + 1];
+            this.array = new T[array.Length + 1];
             last = array.Length;
             // All initial elements to heap array, index 0 is 0
             for (int i = 1; i <= last; i++)
@@ -39,7 +39,7 @@ namespace ADOps
 
         public BinaryHeap(int capacity)
         {
-            array = new int[capacity];
+            array = new T[capacity];
             last = 0;
         }
 
@@ -51,7 +51,7 @@ namespace ADOps
         /// No percolation add
         /// </summary>
         /// <param name="n">n to add to heap</param>
-        public void AddFree(int n)
+        public void AddFree(T n)
         {
             if (last + 1 >= array.Length)
                 RedoArray();
@@ -62,7 +62,7 @@ namespace ADOps
         /// Add all elements of given array without percolation
         /// </summary>
         /// <param name="array">Given array</param>
-        public void AddFree(int[] array)
+        public void AddFree(T[] array)
         {
             while (last + array.Length > this.array.Length)
                 RedoArray();
@@ -83,7 +83,7 @@ namespace ADOps
         /// Add n to heap
         /// </summary>
         /// <param name="n">n to add to heap</param>
-        public void Add(int n)
+        public void Add(T n)
         {
             AddFree(n);
             PercolateUp(last);
@@ -96,14 +96,14 @@ namespace ADOps
         /// <param name="j">index</param>
         private void Swap(int i, int j)
         {
-            int tmp = array[i];
+            T tmp = array[i];
             array[i] = array[j];
             array[j] = tmp;
         }
 
         private void RedoArray()
         {
-            int[] newArr = new int[array.Length * 2];
+            T[] newArr = new T[array.Length * 2];
             for (int i = 1; i < array.Length; i++)
                 newArr[i] = array[i];
             array = newArr;
@@ -113,7 +113,7 @@ namespace ADOps
         /// Shows minimun
         /// </summary>
         /// <returns>Minimun value in heap</returns>
-        public int FindMin()
+        public T FindMin()
         {
             if (last > 0)
                 return array[1];
@@ -124,11 +124,11 @@ namespace ADOps
         /// Show and delete minimun
         /// </summary>
         /// <returns>Minimun value in heap</returns>
-        public int RemoveMin()
+        public T RemoveMin()
         {
-            int min = FindMin();
+            T min = FindMin();
             array[1] = array[last];
-            array[last] = 0;
+            array[last] = default(T);
             last--;
             PercolateDown(1);
             return min;
@@ -136,20 +136,20 @@ namespace ADOps
 
         private void PercolateUp(int i)
         {
-            for (; array[i / 2] > array[i]; i /= 2)
+            for (; array[i / 2].CompareTo(array[i]) > 0; i /= 2)
                 Swap(i / 2, i);
         }
 
         public void PercolateDown(int i)
         {
             int j;
-            int tmp = array[i];
+            T tmp = array[i];
             for (; i * 2 <= last; i = j)
             {
                 j = i * 2;
-                if (last > j + 1 && (array[j + 1] < array[j]))
+                if (last > j + 1 && (array[j + 1].CompareTo(array[j]) < 0))
                     j++;
-                if (array[j] < tmp)
+                if (array[j].CompareTo(tmp) < 0)
                     array[i] = array[j];
                 else
                     break;

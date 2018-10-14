@@ -46,6 +46,7 @@
     <Compile Include="BinarySearchTree.cs" />
     <Compile Include="BinaryTree.cs" />
     <Compile Include="FCNSNode.cs" />
+    <Compile Include="Graph.cs" />
     <Compile Include="MyArrayList.cs" />
     <Compile Include="MyLinkedList.cs" />
     <Compile Include="MyQueue.cs" />
