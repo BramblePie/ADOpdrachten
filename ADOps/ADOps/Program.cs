@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ADOps.MyGraph;
 
 namespace ADOps
 {
@@ -11,7 +10,7 @@ namespace ADOps
     {
         static void Main(string[] args)
         {
-#if false
+#if true   // Run All?
 
             #region Les 1
 
@@ -211,7 +210,7 @@ namespace ADOps
             Console.WriteLine(searchTree);
 
             Console.WriteLine("\nBinary heap");
-            BinaryHeap binaryHeap = new BinaryHeap();
+            BinaryHeap<int> binaryHeap = new BinaryHeap<int>();
             binaryHeap.Add(3);
             binaryHeap.Add(6);
             binaryHeap.Add(13);
@@ -226,6 +225,41 @@ namespace ADOps
             binaryHeap.BuildHeap();
             while (binaryHeap.Size > 0)
                 Console.Write($"{binaryHeap.RemoveMin()} ");
+            Console.WriteLine("\n\n");
+
+            #endregion
+
+#endif
+            #region Les 6
+
+            Graph graph = new Graph();
+            #region Make vertices
+            graph.GetVertex("v0");
+            graph.GetVertex("v1");
+            graph.GetVertex("v2");
+            graph.GetVertex("v3");
+            graph.GetVertex("v4");
+            graph.GetVertex("v5");
+            graph.GetVertex("v6");
+            #endregion
+            graph.AddEdge("v0", "v1", 2);
+            graph.AddEdge("v0", "v3", 1);
+            graph.AddEdge("v1", "v3", 3);
+            graph.AddEdge("v1", "v4", 10);
+            graph.AddEdge("v2", "v0", 4);
+            graph.AddEdge("v2", "v5", 5);
+            graph.AddEdge("v3", "v2", 2);
+            graph.AddEdge("v3", "v4", 2);
+            graph.AddEdge("v3", "v5", 8);
+            graph.AddEdge("v3", "v6", 4);
+            graph.AddEdge("v4", "v6", 6);
+            graph.AddEdge("v6", "v5", 1);
+            Console.WriteLine(graph);
+            graph.Unweighted("v3");
+            graph.PrintPath("v1");
+            graph.PrintPath("v4");
+            graph.PrintPath("v5");
+            graph.PrintPath("v6");
 
             #endregion
 
